@@ -1,0 +1,169 @@
+.gridLayout {
+  display: grid;
+  grid-auto-rows: var(--widget-size);
+  grid-template-columns: repeat(3, var(--widget-size));
+  grid-auto-flow: row dense;
+  gap: 20px;
+
+  &>div {
+    background-color: white;
+    border-radius: 24px;
+    padding: 2rem;
+    transition-property: height, width;
+    transition-duration: .5s;
+    user-select: none;
+    cursor: pointer;
+
+    &>.icon {
+      transition: none;
+      border-radius: 20%;
+      width: 3rem;
+      height: 3rem;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}
+
+.profile {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
+  border-radius: 24px;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  max-width: calc(var(--widget-size)*1.2);
+
+  &>.avatar {
+    transition: none;
+    border-radius: 50%;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+
+    background: no-repeat center/cover url("/asteroid_avatar.png");
+  }
+}
+
+.layout {
+  --widget-size: 230px;
+  padding: 50px;
+  width: 100%;
+
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.popup {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  place-content: center;
+  place-items: center;
+  pointer-events: none;
+  transition: none;
+
+  &>.container {
+    position: relative;
+
+    width: min(calc(var(--window-width)*0.8), 1200px);
+    height: min(calc(var(--window-height)*0.8), 900px);
+
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
+    border-radius: 24px;
+    padding: 2rem;
+    transition-property: height, width;
+    transition-duration: .5s;
+
+    pointer-events: all;
+
+    display: flex;
+    gap: 30px;
+
+    overflow: auto;
+
+    .close_btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+
+      width: 2rem;
+      height: 2rem;
+
+      cursor: pointer;
+
+      transition: none;
+    }
+
+    .icon {
+      transition: none;
+      border-radius: 20%;
+      width: min(calc(var(--window-width)*.8*.3), 300px);
+      height: min(calc(var(--window-width)*.8*.3), 300px);
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}
+
+.popupBackdrop {
+  position: absolute;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  // backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+//1260-900
+@media (max-width: 1260px) and (min-width: 900px) {
+  .layout {
+    --widget-size: 175px;
+  }
+}
+
+@media (max-width: 900px) or (orientation: portrait) {
+  .layout {
+    flex-direction: column;
+    --widget-size: calc((var(--window-width) - 100px - 40px)/3);
+  }
+
+  .profile {
+    display: flex;
+    gap: 30px;
+    max-height: calc(var(--widget-size)*1.2);
+    max-width: unset;
+
+    &>.avatar {
+      width: calc(var(--widget-size)*.8);
+      height: calc(var(--widget-size)*.8);
+      padding: 0;
+    }
+  }
+}
+
+//900 or down
+@media (max-width: 700px) {
+  .layout {
+    --widget-size: calc((var(--window-width) - 100px - 20px)/2);
+  }
+
+  .gridLayout {
+    grid-auto-rows: var(--widget-size);
+    grid-template-columns: repeat(2, var(--widget-size));
+  }
+}
