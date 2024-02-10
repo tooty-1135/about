@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.scss";
 import { Windowsize } from "@/data/componets/Windowsize";
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>
           <main>{children}</main>
           <Analytics />
+          <SpeedInsights />
         </body>
       </Windowsize>
     </html>
