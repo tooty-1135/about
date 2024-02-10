@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Asteroid 的網頁",
   description: "這是Asteroid的網頁，裡面有關於他的資訊",
+  openGraph: {
+    images: '/asteroid_avatar.png',
+  },
 };
 
 export const viewport = {
