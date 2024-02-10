@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import { Windowsize } from "@/data/componets/Windowsize";
+import { Analytics } from '@vercel/analytics/react';
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,6 +23,7 @@ export default function RootLayout({ children }) {
       <Windowsize>
         <body className={inter.className}>
           <main>{children}</main>
+          <Analytics />
         </body>
       </Windowsize>
     </html>
